@@ -4,6 +4,20 @@ import axios from "axios";
 import Table from "./Table";
 import "./App.css";
 
+const Genres = ({ values }) => {
+  return (
+    <>
+      {values.map((genre, idx) => {
+        return (
+          <span key={idx} className="badge">
+            {genre}
+          </span>
+        );
+      })}
+    </>
+  );
+};
+
 function App() {
   const columns = useMemo(
     () => [
@@ -29,11 +43,22 @@ function App() {
           },
           {
             Header: "Genre(s)",
-            accessor: "show.genres"
+            accessor: "show.genres",
+            Cell: ({ cell: { value } }) => <Genres values={value} />
           },
           {
             Header: "Runtime",
-            accessor: "show.runtime"
+            accessor: "show.runtime",
+            Cell: ({ cell: { value } }) => {
+              const hour = Math.floor(value / 60);
+              const min = Math.floor(value % 60);
+              return (
+                <>
+                  {hour > 0 ? `${hour} hr${hour > 1 ? "s" : ""} ` : ""}
+                  {min > 0 ? `${min} min${min > 1 ? "s" : ""}` : ""}
+                </>
+              );
+            }
           },
           {
             Header: "Status",
@@ -52,7 +77,7 @@ function App() {
       const result = await axios("https://api.tvmaze.com/search/shows?q=snow");
       setData(result.data);
     })();
-  });
+  }, []);
 
   return (
     <div className="App">
