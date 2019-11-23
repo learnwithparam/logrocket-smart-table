@@ -26,3 +26,13 @@ table tr:nth-child(even) {
   align-items: center;
   padding: 20px;
 }
+.badge {
+  background-color: #9ae6b4;
+  color: #22543d;
+  margin-right: 4px;
+  padding: 4px 8px;
+  border-radius: 12px;
+  font-size: 12px;
+  font-weight: bold;
+  text-transform: uppercase;
+}
