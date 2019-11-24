@@ -11,6 +11,7 @@ table td {
   padding: 0.5rem;
   border-bottom: 1px solid #ededed;
   border-right: 1px solid #ededed;
+  position: relative;
 }
 table th:last-child,
 table td:last-child {
@@ -20,18 +21,27 @@ table tr:nth-child(even) {
   background-color: #fafafa;
 }
 
+table th::before {
+  position: absolute;
+  right: 15px;
+  top: 16px;
+  content: "";
+  width: 0;
+  height: 0;
+  border-left: 5px solid transparent;
+  border-right: 5px solid transparent;
+}
+table th.sort-asc::before {
+  border-bottom: 5px solid #22543d;
+}
+table th.sort-desc::before {
+  border-top: 5px solid #22543d;
+}
+
 .App {
   display: flex;
   flex-direction: column;
   padding: 20px;
-}
-input {
-  padding: 10px;
-  margin-bottom: 20px;
-  font-size: 18px;
-  border-radius: 5px;
-  border: 1px solid #ddd;
-  box-shadow: none;
 }
 .badge {
   background-color: #9ae6b4;
@@ -42,4 +52,12 @@ input {
   font-size: 12px;
   font-weight: bold;
   text-transform: uppercase;
+}
+input {
+  padding: 10px;
+  margin-bottom: 20px;
+  font-size: 18px;
+  border-radius: 5px;
+  border: 1px solid #ddd;
+  box-shadow: none;
 }
