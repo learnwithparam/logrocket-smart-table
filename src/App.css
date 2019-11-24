@@ -22,9 +22,16 @@ table tr:nth-child(even) {
 
 .App {
   display: flex;
-  justify-content: center;
-  align-items: center;
+  flex-direction: column;
   padding: 20px;
+}
+input {
+  padding: 10px;
+  margin-bottom: 20px;
+  font-size: 18px;
+  border-radius: 5px;
+  border: 1px solid #ddd;
+  box-shadow: none;
 }
 .badge {
   background-color: #9ae6b4;
